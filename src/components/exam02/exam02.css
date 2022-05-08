@@ -1,0 +1,14 @@
+.exam02-pool {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.exam02-button {
+    background-color: var(--button-color);
+    color: white;
+    margin-top: 50px;
+}
+
+.exam02-each-reward {
+    border: 1px solid pink;
+}

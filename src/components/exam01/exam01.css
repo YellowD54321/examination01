@@ -1,0 +1,19 @@
+.exam01-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.exam01-input-region {
+    margin-bottom: 20px;
+}
+
+.exam01-input {
+    width: 100px;
+}
+
+.exam01-button {
+    background-color: var(--button-color);
+    color: white;
+    margin-left: 30px;
+}
