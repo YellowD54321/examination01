@@ -5,7 +5,7 @@
     1-2+3-4+5-6+.....+ / -  N
 
 ### Solution-1
-Use for loop to add all the number to N.
+Use for loop to add all the number to N.\
 Only needs to check if the number is (% 2 === 0) or not.
 
 ```
@@ -20,8 +20,8 @@ function formular(lastNumber) {
 ```
 
 ### Solution-2
-Simplify the formular:
-if (N % 2 === 0) => result = -1 * N / 2
+Simplify the formular:\
+if (N % 2 === 0) => result = -1 * N / 2\
 if (N % 2 !== 0) => result = -1 * (N - 1) / 2 + N
 
 ```
@@ -39,7 +39,7 @@ function formularTwo(lastNumber) {
 抽抽樂總共有五個獎項, 1,2,3 獎各只有一個, 4 獎有 3 個，5 獎有 4 個，請寫出一個程式可以「隨機」的取得「不重複」的禮物
 
 ### Solution
-Use a random number start from 0 to length of Reward Array.
+Use a random number start from 0 to length of Reward Array.\
 Splice Reward Array[random number] and add it into Winner Array.
 
 ```
