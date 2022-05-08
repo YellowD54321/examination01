@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Interview Examination
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Exam01
+寫一個函式計算下列公式之總和：
+    1-2+3-4+5-6+.....+ / -  N
 
-## Available Scripts
+### Solution-1
+Use for loop to add all the number to N.
+Only needs to check if the number is (% 2 === 0) or not.
 
-In the project directory, you can run:
+```
+function formular(lastNumber) {
+    let result = 0;
+    for (let i = 1; i <= lastNumber; i++) {
+        const nextNumber = i % 2 === 0 ? -1 * i : i;
+        result += nextNumber;
+    }
+    return result;
+}
+```
 
-### `npm start`
+### Solution-2
+Simplify the formular:
+if (N % 2 === 0) => result = -1 * N / 2
+if (N % 2 !== 0) => result = -1 * (N - 1) / 2 + N
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+function formularTwo(lastNumber) {
+    if (lastNumber <= 0) return 0;
+    if (lastNumber % 2 === 0) {
+        return (-1 * lastNumber) / 2;
+    } else {
+        return (-1 * (lastNumber - 1)) / 2 + lastNumber;
+    }
+}
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Exam02
+抽抽樂總共有五個獎項, 1,2,3 獎各只有一個, 4 獎有 3 個，5 獎有 4 個，請寫出一個程式可以「隨機」的取得「不重複」的禮物
 
-### `npm test`
+### Solution
+Use a random number start from 0 to length of Reward Array.
+Splice Reward Array[random number] and add it into Winner Array.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+function drawReward() {
+    if (!currentPool || currentPool.length <= 0) {
+        alert("There is no reward left.");
+        return null;
+    }
+    const pool = [...currentPool];
+    const winners = [...listOfWinners];
+    const leftRewardsAmount = pool.length;
+    const randomRewardIndex = getRandomInteger(leftRewardsAmount);
+    const reward = pool.splice(randomRewardIndex, 1);
+    winners.push({
+        name: `Number${winners.length + 1} winner`,
+        reward: reward[0].name,
+    });
+    setCurrentPool(pool);
+    setListOfWinners(winners);
+  }
+```
